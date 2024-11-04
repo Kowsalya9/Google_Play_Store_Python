@@ -85,7 +85,7 @@ def classify_sentiment(review):
     elif score['compound'] <= -0.05:
         return 'Negative'
     else:
-        return 'Netural'
+        return 'Neutral'
     
 # classify_sentiment('Looking forward app,')
 # classify_sentiment('No recipe book Unable recipe book.')
@@ -112,7 +112,7 @@ stars(1)
 merged_df['Stars'] = merged_df['Rating'].apply(stars)
 
 # Group by Category and Sentiment
-grouped_df = merged_df.groupby(['Category','Sentiment_pred_label']).size().unstack(fill_value=0)
+grouped_df = merged_df.groupby(['Category','Sentiment_pred_label','Stars']).size().unstack(fill_value=0)
 
 #plot the stacked bar graph 
 
