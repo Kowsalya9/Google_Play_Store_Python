@@ -56,14 +56,14 @@ len(filtered_data)
 
 filtered_data['Revenue'] = filtered_data['Installs'] * filtered_data['Price']
 
-filtered_data = filtered_data[filtered_data['Revenue'] <= 10000]
+filtered_data = filtered_data[filtered_data['Revenue'] > 10000]
 len(filtered_data)
-#1018
+#33
 
 # Group and aggregate data
 average_data = filtered_data.groupby(['Category', 'Type']).agg({'Installs': 'mean', 'Revenue': 'mean'}).reset_index()
 
-top_category = average_data.groupby('Category')['Installs'].mean().nlargest(3).index
+top_category = average_data.groupby('Category')agg({'Installs': 'mean', 'Revenue': 'mean'}).mean(axis=1).nlargest(3).index
 top_data = average_data[average_data['Category'].isin(top_category)]
 print(top_data)
 
