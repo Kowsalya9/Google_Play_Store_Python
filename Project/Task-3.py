@@ -38,7 +38,7 @@ if not (start_time <= current_time <= end_time):
         filtered_app = filtered_app[
             (filtered_app['App'].str.contains('C', case=False)) &
             (filtered_app['Rating'] < 4.0) &
-            (filtered_app['Reviews'] < 10)
+            (filtered_app['Reviews'] >= 10)
             ]
     #   len(filtered_app)
     
